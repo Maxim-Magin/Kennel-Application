@@ -25,6 +25,7 @@ dependencies:
   rxdart: ^0.24.1
   flutter:
     sdk: flutter
+  animations: ^1.0.0+5
 
   flutter_bloc: ^6.0.0
 
