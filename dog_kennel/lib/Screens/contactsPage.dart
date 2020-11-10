@@ -20,7 +20,7 @@ class _ContactsPageState extends State<ContactsPage>{
   @override
   void initState() {
     super.initState();
-    _bloc = BlocProvider.of(context);
+    _bloc = LegacyBlocProvider.of(context);
   }
 
   @override

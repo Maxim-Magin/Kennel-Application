@@ -21,7 +21,7 @@ class _CategoryListState extends State<CategoryList>{
   void initState() {
     super.initState();
 
-    _bloc = BlocProvider.of(context);
+    _bloc = LegacyBlocProvider.of(context);
   }
 
   @override

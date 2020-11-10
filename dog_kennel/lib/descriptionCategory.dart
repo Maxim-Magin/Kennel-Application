@@ -22,7 +22,7 @@ class _DescriptionCategoryState extends State<DescriptionCategory>{
   void initState() {
     super.initState();
 
-    _bloc = BlocProvider.of(context);
+    _bloc = LegacyBlocProvider.of(context);
   }
 
   @override
@@ -78,63 +78,65 @@ class _DescriptionCategoryState extends State<DescriptionCategory>{
       default:
         return null;
     }
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Text(
-          "${descriptionText[0]}",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22,
-              fontFamily: 'AnticSlab-Regular'),
-          textAlign: TextAlign.justify,
-        ),
-        SizedBox(height: 5,),
-        Text(
-          "${descriptionText[1]}",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22,
-              fontFamily: 'AnticSlab-Regular'),
-          textAlign: TextAlign.justify,
-        ),
-        SizedBox(height: 5,),
-        Text(
-          "${descriptionText[2]}",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22,
-              fontFamily: 'AnticSlab-Regular'),
-          textAlign: TextAlign.justify,
-        ),
-        SizedBox(height: 5,),
-        Text(
-          "${descriptionText[3]}",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22,
-              fontFamily: 'AnticSlab-Regular'),
-          textAlign: TextAlign.justify,
-        ),
-        SizedBox(height: 5,),
-        Text(
-          "${descriptionText[4]}",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22,
-              fontFamily: 'AnticSlab-Regular'),
-          textAlign: TextAlign.justify,
-        ),
-        SizedBox(height: 5,),
-        Text(
-          "${descriptionText[5]}",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22,
-              fontFamily: 'AnticSlab-Regular'),
-          textAlign: TextAlign.justify,
-        ),
-        SizedBox(height: 20,),
-        Container(
-          height: 282,
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(imagePath),
-              fit: BoxFit.cover,
-            )
+    return Container(
+      child:Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            "${descriptionText[0]}",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22,
+                fontFamily: 'AnticSlab-Regular'),
+            textAlign: TextAlign.justify,
           ),
-        )
-      ],
+          SizedBox(height: 5,),
+          Text(
+            "${descriptionText[1]}",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22,
+                fontFamily: 'AnticSlab-Regular'),
+            textAlign: TextAlign.justify,
+          ),
+          SizedBox(height: 5,),
+          Text(
+            "${descriptionText[2]}",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22,
+                fontFamily: 'AnticSlab-Regular'),
+            textAlign: TextAlign.justify,
+          ),
+          SizedBox(height: 5,),
+          Text(
+            "${descriptionText[3]}",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22,
+                fontFamily: 'AnticSlab-Regular'),
+            textAlign: TextAlign.justify,
+          ),
+          SizedBox(height: 5,),
+          Text(
+            "${descriptionText[4]}",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22,
+                fontFamily: 'AnticSlab-Regular'),
+            textAlign: TextAlign.justify,
+          ),
+          SizedBox(height: 5,),
+          Text(
+            "${descriptionText[5]}",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22,
+                fontFamily: 'AnticSlab-Regular'),
+            textAlign: TextAlign.justify,
+          ),
+          SizedBox(height: 20,),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.3,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(imagePath),
+                  fit: BoxFit.cover,
+                )
+            ),
+          )
+        ],
+      ),
     );
   }
 }

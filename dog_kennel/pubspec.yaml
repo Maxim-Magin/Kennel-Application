@@ -26,6 +26,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_bloc: ^6.0.0
+
   syncfusion_flutter_charts: ^18.2.48
   enum_to_string: ^1.0.9
 

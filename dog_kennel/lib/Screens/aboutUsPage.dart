@@ -20,7 +20,7 @@ class _AboutUsPageState extends State<AboutUsPage>{
   @override
   void initState() {
     super.initState();
-    _bloc = BlocProvider.of(context);
+    _bloc = LegacyBlocProvider.of(context);
   }
 
   @override
@@ -29,120 +29,138 @@ class _AboutUsPageState extends State<AboutUsPage>{
     return Scaffold(
       body: SafeArea(
           child: Container(
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(Images.greyPawsPath()),
-                    fit: BoxFit.cover,
-                  )
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  Container(
-                      alignment: Alignment.center,
-                      child: Text(
-                        'ABOUT US',
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 70, color: Color(0xFFB71C1C),
-                            fontFamily: 'Rowdies'),
-                        textAlign: TextAlign.justify,
-                      )
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(Images.greyPawsPath()),
+                  fit: BoxFit.cover,
+                )
+            ),
+            height: MediaQuery.of(context).size.height,
+            child: SingleChildScrollView(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                      SizedBox(height: 40,),
-                      Text(
-                        'The "GOODBOY" charitable Foundation started its work in 2012.',
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18,
-                            fontFamily: 'AnticSlab'),
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(height: 20,),
-                      Text(
-                        'During the work of the shelter more than 1000 animals were attached to families',
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18,
-                            fontFamily: 'AnticSlab'),
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(height: 20,),
-                      Text(
-                        'We are actively engaged in promoting a good, responsible attitude to Pets.',
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18,
-                            fontFamily: 'AnticSlab'),
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(height: 20,),
-                      Text(
-                        'Our task is to make the CITY GOOD.',
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18,
-                            fontFamily: 'AnticSlab'),
-                      ),
-                      SizedBox(height: 50,)
-                    ],
-                  ),
-                  Column(
-                    children: <Widget>[
-                      Text(
-                        'Gallery',
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36, color: Color(0xFFB71C1C),
-                            fontFamily: 'Rowdies'),
-                        textAlign: TextAlign.center,
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.5,
+                        child: Column(
+                          children: [
+                            Container(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  'ABOUT US',
+                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 70, color: Color(0xFFB71C1C),
+                                      fontFamily: 'Rowdies'),
+                                  textAlign: TextAlign.justify,
+                                )
+                            ),
+                            Container(
+                              child:Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  SizedBox(height:  MediaQuery.of(context).size.height * 0.05,),
+                                  Text(
+                                    'The "GOODBOY" charitable Foundation started its work in 2012.',
+                                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18,
+                                        fontFamily: 'AnticSlab'),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  SizedBox(height: MediaQuery.of(context).size.height * 0.025,),
+                                  Text(
+                                    'During the work of the shelter more than 1000 animals were attached to families',
+                                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18,
+                                        fontFamily: 'AnticSlab'),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  SizedBox(height: MediaQuery.of(context).size.height * 0.025,),
+                                  Text(
+                                    'We are actively engaged in promoting a good, responsible attitude to Pets.',
+                                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18,
+                                        fontFamily: 'AnticSlab'),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  SizedBox(height: MediaQuery.of(context).size.height * 0.025,),
+                                  Text(
+                                    'Our task is to make the CITY GOOD.',
+                                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18,
+                                        fontFamily: 'AnticSlab'),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       Container(
-                        height: 300,
-                        width: 1000,
-                        child: ListView(
-                         scrollDirection: Axis.horizontal,
-                         children: <Widget>[
-                           Container(
-                             height: MediaQuery.of(context).size.height,
-                             width: MediaQuery.of(context).size.width,
-                             child: Image(
-                               image: AssetImage(Images.dogWithManPath()),
-                               fit: BoxFit.cover,
-                             ),
-                           ),
-                           Container(
-                             height: MediaQuery.of(context).size.height,
-                             width: MediaQuery.of(context).size.width,
-                             child: Image(
-                               image: AssetImage(Images.dogWithOldManPath()),
-                               fit: BoxFit.cover,
-                             ),
-                           ),
-                           Container(
-                             height: MediaQuery.of(context).size.height,
-                             width: MediaQuery.of(context).size.width,
-                            child: Image(
-                               image: AssetImage(Images.puppyPath()),
-                               fit: BoxFit.cover,
-                             ),
-                           ),
-                           Container(
-                             height: MediaQuery.of(context).size.height,
-                             width: MediaQuery.of(context).size.width,
-                             child: Image(
-                               image: AssetImage(Images.dogWithWomanPath()),
-                               fit: BoxFit.cover,
-                             ),
-                           ),
-                           Container(
-                             height: MediaQuery.of(context).size.height,
-                             width: MediaQuery.of(context).size.width,
-                             child: Image(
-                               image: AssetImage(Images.dogWithOldMan2Path()),
-                               fit: BoxFit.cover,
-                             ),
-                           ),
-                         ]
-                        )
+                          height: MediaQuery.of(context).size.height * 0.4,
+                          child: Column(
+                              children: <Widget>[
+                                Container(
+                                  height: MediaQuery.of(context).size.height * 0.1,
+                                  child: Text(
+                                    'Gallery',
+                                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36, color: Color(0xFFB71C1C),
+                                        fontFamily: 'Rowdies'),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                                Container(
+                                    height: MediaQuery.of(context).size.height * 0.3,
+                                    width: 1000,
+                                    child: ListView(
+                                        scrollDirection: Axis.horizontal,
+                                        children: <Widget>[
+                                          Container(
+                                            height: MediaQuery.of(context).size.height,
+                                            width: MediaQuery.of(context).size.width,
+                                            child: Image(
+                                              image: AssetImage(Images.dogWithManPath()),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          Container(
+                                            height: MediaQuery.of(context).size.height,
+                                            width: MediaQuery.of(context).size.width,
+                                            child: Image(
+                                              image: AssetImage(Images.dogWithOldManPath()),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          Container(
+                                            height: MediaQuery.of(context).size.height,
+                                            width: MediaQuery.of(context).size.width,
+                                            child: Image(
+                                              image: AssetImage(Images.puppyPath()),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          Container(
+                                            height: MediaQuery.of(context).size.height,
+                                            width: MediaQuery.of(context).size.width,
+                                            child: Image(
+                                              image: AssetImage(Images.dogWithWomanPath()),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          Container(
+                                            height: MediaQuery.of(context).size.height,
+                                            width: MediaQuery.of(context).size.width,
+                                            child: Image(
+                                              image: AssetImage(Images.dogWithOldMan2Path()),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ]
+                                    )
+                                )
+                              ]
+                          )
                       )
-                    ]
-                  )
-                ]
-              )
-          )
 
+                    ]
+                )
+
+            ),
+          )
       )
     );
   }

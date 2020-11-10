@@ -19,7 +19,7 @@ class _RegistrationPageState extends State<RegistrationPage>{
   @override
   void initState() {
     super.initState();
-    _bloc = BlocProvider.of(context);
+    _bloc = LegacyBlocProvider.of(context);
   }
 
   @override
@@ -132,7 +132,7 @@ class _RegistrationPageState extends State<RegistrationPage>{
                                 onPressed: (){
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (BuildContext context) => BlocProvider(
+                                      MaterialPageRoute(builder: (BuildContext context) => LegacyBlocProvider(
                                           child: LogInPage(),
                                           bloc: MainBloc()
                                       ))

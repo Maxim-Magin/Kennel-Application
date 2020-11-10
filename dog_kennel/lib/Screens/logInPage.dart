@@ -20,7 +20,7 @@ class _LogInPageState extends State<LogInPage>{
   @override
   void initState() {
     super.initState();
-    _bloc = BlocProvider.of(context);
+    _bloc = LegacyBlocProvider.of(context);
   }
 
   @override
@@ -105,9 +105,9 @@ class _LogInPageState extends State<LogInPage>{
                               onPressed: (){
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (BuildContext context) => BlocProvider(
+                                    MaterialPageRoute(builder: (BuildContext context) => LegacyBlocProvider(
                                         child: HomePage(),
-                                        bloc: MainBloc()
+                                        bloc: MainBloc(),
                                     ))
                                 );
                               },
@@ -127,7 +127,7 @@ class _LogInPageState extends State<LogInPage>{
                                   ..onTap = (){
                                     Navigator.push(
                                         context,
-                                        MaterialPageRoute(builder: (BuildContext context) => BlocProvider(
+                                        MaterialPageRoute(builder: (BuildContext context) => LegacyBlocProvider(
                                             child: RegistrationPage(),
                                             bloc: MainBloc()
                                         ))

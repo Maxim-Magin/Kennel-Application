@@ -20,14 +20,14 @@ class _OurDogsPageState extends State<OurDogsPage> {
   @override
   void initState() {
     super.initState();
-    _bloc = BlocProvider.of(context);
+    _bloc = LegacyBlocProvider.of(context);
     _bloc.outSelectedUIEvent.listen((event) {
       switch(event.eventType){
         case MainUIEventType.goToDogDescription:
           Dog selectedDog = event.parameters["dog"];
           Navigator.push(
               context,
-              MaterialPageRoute(builder: (BuildContext context) => BlocProvider(
+              MaterialPageRoute(builder: (BuildContext context) => LegacyBlocProvider(
                   child: DogDescriptionPage(),
                   bloc: DogDescriptionPageBloc(selectedDog)
               ))

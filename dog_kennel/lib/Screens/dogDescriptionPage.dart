@@ -21,7 +21,7 @@ class _DogDescriptionPageState extends State<DogDescriptionPage> {
   @override
   void initState() {
     super.initState();
-    _bloc = BlocProvider.of(context);
+    _bloc = LegacyBlocProvider.of(context);
   }
 
   @override

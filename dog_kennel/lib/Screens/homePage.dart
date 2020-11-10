@@ -10,6 +10,7 @@ import 'package:dog_kennel/Screens/ourDogsPage.dart';
 import 'package:dog_kennel/Screens/servicesPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../dogsRepository.dart';
 import 'contactsPage.dart';
@@ -26,7 +27,7 @@ class _HomePageState extends State<HomePage>{
 @override
 void initState() {
   super.initState();
-  _bloc = BlocProvider.of(context);
+  _bloc = LegacyBlocProvider.of(context);
 }
 
 final List<Widget> introWidgetsList = <Widget>[
@@ -163,6 +164,21 @@ void getChangedPageAndMoveBar(int page) {
   setState(() {});
 }
 
+Route _createRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => LegacyBlocProvider(
+          child: OurDogsPage(),
+          bloc: MainBloc(),
+      ),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return ScaleTransition(
+          scale: animation,
+          child: child,
+        );
+      },
+    );
+}
+
 @override
 Widget build(BuildContext context) {
   DogRepository _repository = new HardCodeDogRepository();
@@ -216,10 +232,7 @@ Widget build(BuildContext context) {
               onTap: (){
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (BuildContext context) => BlocProvider(
-                        child: OurDogsPage(),
-                        bloc: MainBloc()
-                    ))
+                    _createRoute()
                 );
               },
               child: Container(
@@ -253,13 +266,14 @@ Widget build(BuildContext context) {
               onTap: (){
                 Navigator.push(
                     context,
-                   MaterialPageRoute(builder: (BuildContext context) => BlocProvider(
+                   MaterialPageRoute(builder: (BuildContext context) => LegacyBlocProvider(
                        child: ServicesPage(),
                         bloc: ServicesPageBloc()
                    )
                    )
                 );
-                },
+              },
+              
               child: Container(
                 height: 350,
                 child: Column(
@@ -286,7 +300,7 @@ Widget build(BuildContext context) {
                 onTap: (){
                   Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (BuildContext context) => BlocProvider(
+                      MaterialPageRoute(builder: (BuildContext context) => LegacyBlocProvider(
                           child: AboutUsPage(),
                           bloc: MainBloc()
                       ))
@@ -317,7 +331,7 @@ Widget build(BuildContext context) {
                 onTap: (){
                   Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (BuildContext context) => BlocProvider(
+                      MaterialPageRoute(builder: (BuildContext context) => LegacyBlocProvider(
                           child: ContactsPage(),
                           bloc: MainBloc()
                       ))

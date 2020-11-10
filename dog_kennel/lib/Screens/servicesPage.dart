@@ -18,7 +18,7 @@ class _ServicesPageState extends State<ServicesPage>{
   @override
   void initState() {
     super.initState();
-    _bloc = BlocProvider.of(context);
+    _bloc = LegacyBlocProvider.of(context);
   }
 
   @override
@@ -26,53 +26,57 @@ class _ServicesPageState extends State<ServicesPage>{
     return Scaffold(
       body: SafeArea(
         child: Container(
-          height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(Images.greyPawsPath()),
-              fit: BoxFit.cover,
+            height: MediaQuery.of(context).size.height,
+            child: SingleChildScrollView(
+              child: Container(
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(Images.greyPawsPath()),
+                      fit: BoxFit.cover,
+                    )
+                ),
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'SERVICES',
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 70, color: Color(0xFFB71C1C),
+                              fontFamily: 'Rowdies'),
+                          textAlign: TextAlign.justify,
+                        )
+                    ),
+                    SizedBox(height: 5,),
+                    StreamBuilder(
+                      stream: _bloc.outAllCategories,
+                      builder: (BuildContext context,
+                          AsyncSnapshot<List<String>> snapshot){
+                        if(!snapshot.hasData)
+                        {
+                          return Container();
+                        }
+                        final List<String> settings = snapshot.data;
+                        return CategoryList(settings);
+                      },
+                    ),
+                    SizedBox(height: 20,),
+                    StreamBuilder(
+                      stream: _bloc.outSelectedCategoryIndex,
+                      builder: (BuildContext context,
+                          AsyncSnapshot<int> snapshot){
+                        if(!snapshot.hasData)
+                        {
+                          return Container();
+                        }
+                        final int settings = snapshot.data;
+                        return DescriptionCategory(settings);
+                      },
+                    )
+                  ],
+                ),
+              ),
             )
-          ),
-          child: Column(
-            children: <Widget>[
-              Container(
-                  alignment: Alignment.center,
-                  child: Text(
-                    'SERVICES',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 70, color: Color(0xFFB71C1C),
-                        fontFamily: 'Rowdies'),
-                    textAlign: TextAlign.justify,
-                  )
-              ),
-              SizedBox(height: 5,),
-              StreamBuilder(
-                stream: _bloc.outAllCategories,
-                builder: (BuildContext context,
-                    AsyncSnapshot<List<String>> snapshot){
-                  if(!snapshot.hasData)
-                    {
-                      return Container();
-                    }
-                    final List<String> settings = snapshot.data;
-                    return CategoryList(settings);
-              },
-              ),
-              SizedBox(height: 20,),
-              StreamBuilder(
-                stream: _bloc.outSelectedCategoryIndex,
-                builder: (BuildContext context,
-                    AsyncSnapshot<int> snapshot){
-                  if(!snapshot.hasData)
-                  {
-                    return Container();
-                  }
-                  final int settings = snapshot.data;
-                  return DescriptionCategory(settings);
-                },
-              )
-            ],
-          ),
-        ),
+        )
       ),
     );
   }
