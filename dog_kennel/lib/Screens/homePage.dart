@@ -1,6 +1,7 @@
 
 import 'dart:ui';
 
+import 'package:animations/animations.dart';
 import 'package:dog_kennel/Bloc/bloc_provider.dart';
 import 'package:dog_kennel/Bloc/main_bloc.dart';
 import 'package:dog_kennel/Bloc/servicePageBloc.dart';
@@ -228,39 +229,57 @@ Widget build(BuildContext context) {
               ],
             ),
             SizedBox(height: 5,),
-            GestureDetector(
-              onTap: (){
-                Navigator.push(
-                    context,
-                    _createRoute()
-                );
-              },
-              child: Container(
-                height: 350,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(height: 10,),
-                    Text(
-                      'Our',
-                      style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold,
-                          color: Colors.white, fontFamily: 'Rowdies'),
+            OpenContainer(
+                closedBuilder: (_, openContainer){
+                  return GestureDetector(
+                    child: Container(
+                      height: 350,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          SizedBox(height: 10,),
+                          Text(
+                            'Our',
+                            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold,
+                                color: Colors.white, fontFamily: 'Rowdies'),
+                          ),
+                          Text(
+                            'dogs',
+                            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold,
+                                color: Colors.white, fontFamily: 'Rowdies'),
+                          ),
+                        ],
+                      ),
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(Images.dogsPath()),
+                            fit: BoxFit.cover,
+                          )
+                      ),
                     ),
-                    Text(
-                      'dogs',
-                      style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold,
-                          color: Colors.white, fontFamily: 'Rowdies'),
+                    onTap: openContainer,
+                  );
+                },
+                closedElevation: 5.0,
+                openBuilder: (_, closeContainer){
+                  return GestureDetector(
+                    child: LegacyBlocProvider(
+                      child: OurDogsPage(),
+                      bloc: MainBloc(),
                     ),
-                  ],
-                ),
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(Images.dogsPath()),
-                      fit: BoxFit.cover,
-                    )
-                ),
-              ),
+                    onTap: closeContainer,
+                  );
+                }
             ),
+            // GestureDetector(
+            //   onTap: (){
+            //     Navigator.push(
+            //         context,
+            //         _createRoute()
+            //     );
+            //   },
+            //   child:
+            // ),
             SizedBox(height: 5,),
             GestureDetector(
               onTap: (){
@@ -362,7 +381,7 @@ Widget build(BuildContext context) {
         ),
       ),
     ),
-  );
 
+  );
 }
 }

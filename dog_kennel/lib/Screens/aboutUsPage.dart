@@ -149,7 +149,14 @@ class _AboutUsPageState extends State<AboutUsPage>{
                                               fit: BoxFit.cover,
                                             ),
                                           ),
-                                        ]
+                                          Container(
+                                            height: MediaQuery.of(context).size.height,
+                                            width: MediaQuery.of(context).size.width,
+                                            child: Image.network(
+                                              'https://kubnews.ru/upload/iblock/21d/21de27a6fcd2d0e93149fd84b6d3266e.jpg',
+                                              fit: BoxFit.cover,
+                                            ),
+                                          )]
                                     )
                                 )
                               ]
