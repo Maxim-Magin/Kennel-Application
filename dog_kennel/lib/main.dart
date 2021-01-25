@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: LegacyBlocProvider(
-        child: LogInPage(),
+        child: AboutUsPage(),
         bloc: MainBloc(),
       ),
     );
